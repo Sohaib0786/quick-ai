@@ -9,7 +9,7 @@ axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const BlogTitles = () => {
 
-  const blogCategories = ['General',  'Technology', 'Business', 'Health', 'Lifestyle', 'Education', 'Travel', 'Food']
+  const blogCategories = ['General', 'Technology', 'Business', 'Health', 'Lifestyle', 'Education', 'Travel', 'Food']
   
     const [selectedCategory, setSelectedCategory] = useState('General');
     const [input, setInput] = useState('');
@@ -23,10 +23,13 @@ const BlogTitles = () => {
       e.preventDefault();
       
       try {
-         setLoading(true)
-         const prompt = `Generate a blog title for the keyword ${input} in the category ${selectedCategory}`
 
-         const { data } = await axios.post('/api/ai/generate-blog-title', {prompt}, {headers: {Authorization: `Bearer ${await getToken()}`}})
+         setLoading(true);
+
+    const prompt = `Generate a blog title for the keyword ${input} in the category ${selectedCategory}`;
+
+    const { data } = await 
+    axios.post('/api/ai/generate-blog-title', {prompt}, {headers: {Authorization: `Bearer ${await getToken()}`}})
 
          if (data.success) {
           setContent(data.content);

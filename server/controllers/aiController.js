@@ -7,14 +7,9 @@ import fs from "fs";
 import pdf from "pdf-parse/lib/pdf-parse.js";
 
 
-
-
-
-
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
-
 
 
 
@@ -71,7 +66,10 @@ export const generateArticle = async (req, res) => {
 */
 
 
+
+
 export const generateArticle = async (req, res) => {
+  
   try {
 
     const { userId } = req.auth();
@@ -164,7 +162,6 @@ export const generateBlogTitle = async (req, res)=>{
 
 
 
-
  export const generateBlogTitle = async (req, res) => {
 
   try {
@@ -216,9 +213,9 @@ export const generateBlogTitle = async (req, res)=>{
 
 
         export const generateImage = async (req, res)=>{
-    
-    
-            try {
+  
+  
+        try {
                 
         const { userId } = req.auth();
         const { prompt, publish } = req.body;
@@ -231,7 +228,6 @@ export const generateBlogTitle = async (req, res)=>{
             })
         }
 
-        
         const formData = new FormData()
         formData.append('prompt', prompt)
         const {data} = await axios.post("https://clipdrop-api.co/text-to-image/v1", formData, {
